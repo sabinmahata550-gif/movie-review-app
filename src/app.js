@@ -6,6 +6,12 @@ import movieRouter from "./routes/moviRoute.js"
 import cookieParser from "cookie-parser";
 const app = express();
 
+
+app.get("/", (req, res) => {
+    res.json({
+        message: "Movie Review API is running."
+    });
+});
 app.use(express.json());
 app.use(cookieParser());
 
