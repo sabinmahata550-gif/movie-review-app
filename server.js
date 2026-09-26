@@ -1,9 +1,14 @@
 import connectDb from "./src/config/db.js";
 import app from "./src/app.js";
-import config from "./src/config/config.js";
+
+const PORT = process.env.PORT || 5000;
 
 connectDb();
 
-app.listen(config.port, () => {
-    console.log(`Server started on port ${config.port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => {
+        console.log(`Server started on port ${PORT}`);
+    });
+}
+
+export default app;
