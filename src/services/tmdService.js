@@ -15,6 +15,13 @@ const getPopularMovies = async () => {
     return response.data;
 };
 
+const getTrendingMovies = async () => {
+    const response = await tmdbApi.get(
+        "/trending/movie/week"
+    );
+
+    return response.data;
+};
 const searchMovies = async (query, page = 1) => {
     const response = await tmdbApi.get("/search/movie", {
         params: {
@@ -125,6 +132,7 @@ const discoverMovies = async (filters = {}) => {
 
 export default {
     getPopularMovies,
+    getTrendingMovies,
     searchMovies,
     getMovieDetails,
     discoverMovies,

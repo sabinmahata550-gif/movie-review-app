@@ -33,9 +33,16 @@ router.get(
 );
 
 router.get(
+    "/trending",
+    movieController.getTrendingMovies
+);
+
+router.get(
     "/:movieId",
     validate(movieIdSchema, "params"),
     movieController.getMovieDetails
 );
+
+
 
 export default router;

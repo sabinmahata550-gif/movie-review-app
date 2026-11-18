@@ -98,11 +98,28 @@ const getGenres = async (req, res) => {
     }
 };
 
+const getTrendingMovies = async (req, res) => {
+    try {
+        const movies = await tmdbService.getTrendingMovies();
+
+        res.status(200).json(movies);
+
+    } catch (error) {
+        res.status(error.response?.status || 500).json({
+            message:
+                error.response?.data?.status_message ||
+                error.message ||
+                "Something went wrong."
+        });
+    }
+};
+
 export default {
     getPopularMovies,
     searchMovies,
     getMovieDetails,
     discoverMovies,
-    getGenres
+    getGenres,
+    getTrendingMovies
 
 };
